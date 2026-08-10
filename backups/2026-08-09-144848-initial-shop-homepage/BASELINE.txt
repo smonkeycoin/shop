@@ -1,0 +1,2 @@
+Baseline inicial: la carpeta /Users/smonkeycoin/Desktop/shop estaba vacía antes de construir el home page inicial.
+Fecha: Sun Aug  9 14:48:48 EST 2026
