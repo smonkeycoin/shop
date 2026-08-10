@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import { BundleCard } from "@/components/shop/BundleCard";
 import { Breadcrumbs } from "@/components/shop/Breadcrumbs";
 import { ShopLayout } from "@/components/shop/ShopLayout";
-import { bundles } from "@/data/catalog";
+import { getStorefrontCatalog } from "@/lib/repositories/catalogRepository";
 
 export const metadata: Metadata = {
   title: "Kits respiratorios | Shop NeumoPractice",
   description: "Kits conceptuales para simplificar compras respiratorias en Shop NeumoPractice.",
 };
 
-export default function KitsPage() {
+export default async function KitsPage() {
+  const catalog = await getStorefrontCatalog();
+
   return (
     <ShopLayout>
       <section className="section-shell catalog-page">
@@ -21,12 +23,12 @@ export default function KitsPage() {
             <p>Bundles conceptuales para agrupar productos frecuentes sin sustituir validación profesional.</p>
           </div>
           <div className="catalog-count">
-            <strong>{bundles.length}</strong>
+            <strong>{catalog.bundles.length}</strong>
             <span>kits preparados</span>
           </div>
         </header>
         <div className="bundle-grid full">
-          {bundles.map((bundle) => (
+          {catalog.bundles.map((bundle) => (
             <BundleCard bundle={bundle} key={bundle.id} />
           ))}
         </div>

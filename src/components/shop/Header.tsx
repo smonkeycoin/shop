@@ -37,10 +37,8 @@ const navItems = [
   { label: "Contacto", href: "/contacto" },
 ];
 
-const mobileExtraItems = [
-  { label: "Favoritos", href: "/favoritos" },
-  { label: "Carrito", href: "#cart" },
-];
+// TODO: Replace public login destination when customer accounts are implemented.
+const publicLoginHref = "/admin/login";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -87,11 +85,11 @@ export function Header() {
           </span>
           <span className="utility-item">
             <ShieldCheck size={16} aria-hidden="true" />
-            Distribuidores autorizados
+            Productos seleccionados
           </span>
           <span className="utility-item">
             <Stethoscope size={16} aria-hidden="true" />
-            Atención a profesionales de la salud
+            Atención personalizada
           </span>
         </div>
       </div>
@@ -154,10 +152,10 @@ export function Header() {
           </form>
 
           <div className="header-actions">
-            <button className="header-action login-action" type="button">
+            <Link className="header-action login-action" href={publicLoginHref} aria-label="Iniciar sesión">
               <User size={20} aria-hidden="true" />
               <span>Iniciar sesión</span>
-            </button>
+            </Link>
             <Link className="header-action favorite-header-action" href="/favoritos">
               <Heart size={20} aria-hidden="true" />
               <span>Favoritos</span>
@@ -198,25 +196,6 @@ export function Header() {
                 {item.dropdown ? <ChevronDown size={15} aria-hidden="true" /> : null}
               </Link>
             ))}
-            {mobileExtraItems.map((item) =>
-              item.href === "#cart" ? (
-                <button
-                  className="mobile-nav-button"
-                  type="button"
-                  key={item.href}
-                  onClick={() => {
-                    openCart();
-                    setMenuOpen(false);
-                  }}
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <Link className="mobile-only-link" href={item.href} key={item.href} onClick={() => setMenuOpen(false)}>
-                  {item.label}
-                </Link>
-              ),
-            )}
           </nav>
         </div>
       </header>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, Mail, Phone } from "lucide-react";
+import { Clock, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 
 const informationLinks = [
@@ -22,20 +22,9 @@ export function Footer() {
         <div className="footer-brand">
           <Logo />
           <p>
-            Tienda especializada en productos para terapia respiratoria. Complementamos tu salud
-            respiratoria con soluciones seleccionadas.
+            Tienda especializada en productos para terapia respiratoria y cuidado respiratorio cotidiano.
+            Seleccionamos soluciones con enfoque comercial responsable.
           </p>
-          <div className="social-row" aria-label="Redes sociales">
-            <Link href="/facebook" aria-label="Facebook">
-              <span aria-hidden="true">f</span>
-            </Link>
-            <Link href="/instagram" aria-label="Instagram">
-              <span aria-hidden="true">ig</span>
-            </Link>
-            <Link href="/linkedin" aria-label="LinkedIn">
-              <span aria-hidden="true">in</span>
-            </Link>
-          </div>
         </div>
 
         <FooterLinks title="Información" links={informationLinks} />
@@ -45,13 +34,8 @@ export function Footer() {
           <h2>Contacto</h2>
           <ul>
             <li className="contact-line">
-              <Phone size={17} aria-hidden="true" />
-              {/* Temporary phone placeholder. Replace before commercial launch. */}
-              <span>55 1234 5678</span>
-            </li>
-            <li className="contact-line">
               <Mail size={17} aria-hidden="true" />
-              <span>ventas@neumopractice.com</span>
+              <Link href="mailto:ventas@neumopractice.com">ventas@neumopractice.com</Link>
             </li>
             <li className="contact-line">
               <Clock size={17} aria-hidden="true" />
@@ -63,7 +47,7 @@ export function Footer() {
 
       <div className="section-shell footer-bottom">
         <span>© 2024 shop.neumopractice.com. Todos los derechos reservados.</span>
-        <span>Desarrollado con ♥ para profesionales de la salud.</span>
+        <span>Desarrollado para hacer más simple el cuidado respiratorio.</span>
       </div>
     </footer>
   );

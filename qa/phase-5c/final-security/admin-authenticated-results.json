@@ -1,0 +1,86 @@
+[
+  {
+    "route": "/admin",
+    "url": "http://localhost:3000/admin",
+    "h1": "Buenos dias, Trino",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 11,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin.png",
+    "pass": true
+  },
+  {
+    "route": "/admin/products",
+    "url": "http://localhost:3000/admin/products",
+    "h1": "Productos",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 12,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin-products.png",
+    "pass": true
+  },
+  {
+    "route": "/admin/inventory",
+    "url": "http://localhost:3000/admin/inventory",
+    "h1": "Inventario",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 13,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin-inventory.png",
+    "pass": true
+  },
+  {
+    "route": "/admin/orders",
+    "url": "http://localhost:3000/admin/orders",
+    "h1": "Pedidos",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 14,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin-orders.png",
+    "pass": true
+  },
+  {
+    "route": "/admin/customers",
+    "url": "http://localhost:3000/admin/customers",
+    "h1": "Clientes",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 15,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin-customers.png",
+    "pass": true
+  },
+  {
+    "route": "/admin/analytics",
+    "url": "http://localhost:3000/admin/analytics",
+    "h1": "Analytics",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 16,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin-analytics.png",
+    "pass": true
+  },
+  {
+    "route": "/admin/settings",
+    "url": "http://localhost:3000/admin/settings",
+    "h1": "Configuracion",
+    "hasAdminNav": true,
+    "hasLoginText": false,
+    "userVisible": true,
+    "appErrorCount": 0,
+    "externalHydrationWarningCount": 17,
+    "screenshot": "qa/phase-5c/final-security/admin-auth-admin-settings.png",
+    "pass": true
+  }
+]

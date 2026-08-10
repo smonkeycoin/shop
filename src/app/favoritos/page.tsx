@@ -6,11 +6,11 @@ import { Breadcrumbs } from "@/components/shop/Breadcrumbs";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ShopLayout } from "@/components/shop/ShopLayout";
 import { useShop } from "@/components/shop/ShopProvider";
-import { products } from "@/data/catalog";
+import { publicProducts } from "@/data/catalog";
 
 export default function FavoritesPage() {
   const { favoriteIds } = useShop();
-  const favoriteProducts = products.filter((product) => favoriteIds.includes(product.id));
+  const favoriteProducts = publicProducts.filter((product) => favoriteIds.includes(product.id));
 
   return (
     <ShopLayout>

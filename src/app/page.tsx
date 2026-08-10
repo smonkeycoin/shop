@@ -1,5 +1,3 @@
-"use client";
-
 import { BrandStrip } from "@/components/shop/BrandStrip";
 import { BundleSection } from "@/components/shop/BundleSection";
 import { CategoryGrid } from "@/components/shop/CategoryGrid";
@@ -8,9 +6,13 @@ import { Hero } from "@/components/shop/Hero";
 import { Newsletter } from "@/components/shop/Newsletter";
 import { ShopLayout } from "@/components/shop/ShopLayout";
 import { TrustBar } from "@/components/shop/TrustBar";
-import { featuredBundles, featuredProducts } from "@/data/products";
+import { getStorefrontCatalog } from "@/lib/repositories/catalogRepository";
 
-export default function Home() {
+export default async function Home() {
+  const catalog = await getStorefrontCatalog();
+  const featuredProducts = catalog.products.filter((product) => product.featured).slice(0, 6);
+  const featuredBundles = catalog.bundles.filter((bundle) => bundle.featured).slice(0, 3);
+
   return (
     <ShopLayout>
       <Hero />
@@ -18,7 +20,7 @@ export default function Home() {
       <CategoryGrid />
       <FeaturedProducts products={featuredProducts} />
       <BundleSection bundles={featuredBundles} />
-      <BrandStrip />
+      <BrandStrip brands={catalog.brands.filter((brand) => brand.featured)} />
       <Newsletter />
     </ShopLayout>
   );

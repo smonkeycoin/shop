@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductDetail } from "@/components/shop/ProductDetail";
 import { ShopLayout } from "@/components/shop/ShopLayout";
-import { getProductBySlug } from "@/data/catalog";
+import { getPublicProductBySlug } from "@/data/catalog";
+import { getStorefrontCatalog } from "@/lib/repositories/catalogRepository";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -10,7 +11,8 @@ type ProductPageProps = {
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const catalog = await getStorefrontCatalog();
+  const product = catalog.products.find((item) => item.slug === slug) ?? getPublicProductBySlug(slug);
 
   if (!product) {
     return {};
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = getPublicProductBySlug(slug);
 
   if (!product) {
     notFound();

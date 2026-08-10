@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BundleDetail } from "@/components/shop/BundleDetail";
 import { ShopLayout } from "@/components/shop/ShopLayout";
 import { getBundleBySlug } from "@/data/catalog";
+import { getStorefrontCatalog } from "@/lib/repositories/catalogRepository";
 
 type BundlePageProps = {
   params: Promise<{ slug: string }>;
@@ -10,7 +11,8 @@ type BundlePageProps = {
 
 export async function generateMetadata({ params }: BundlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const bundle = getBundleBySlug(slug);
+  const catalog = await getStorefrontCatalog();
+  const bundle = catalog.bundles.find((item) => item.slug === slug) ?? getBundleBySlug(slug);
 
   if (!bundle) {
     return { title: "Kit no encontrado | Shop NeumoPractice" };

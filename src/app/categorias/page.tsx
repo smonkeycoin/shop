@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/shop/Breadcrumbs";
 import { CategoryVisual } from "@/components/shop/CategoryGrid";
 import { ShopLayout } from "@/components/shop/ShopLayout";
-import { categories, getProductsByCategory } from "@/data/catalog";
+import { getStorefrontCatalog } from "@/lib/repositories/catalogRepository";
 
 export const metadata: Metadata = {
   title: "Compra por categoría | Shop NeumoPractice",
@@ -12,7 +12,9 @@ export const metadata: Metadata = {
     "Explora aerocámaras, nebulización, higiene nasal, monitoreo, terapia respiratoria y accesorios.",
 };
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  const catalog = await getStorefrontCatalog();
+
   return (
     <ShopLayout>
       <section className="section-shell directory-page">
@@ -25,8 +27,8 @@ export default function CategoriesPage() {
           </div>
         </header>
         <div className="directory-grid">
-          {categories.map((category) => {
-            const productCount = getProductsByCategory(category.slug).length;
+          {catalog.categories.map((category) => {
+            const productCount = catalog.products.filter((product) => product.categorySlug === category.slug).length;
 
             return (
               <Link className="directory-card" href={`/categorias/${category.slug}`} key={category.slug}>
